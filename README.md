@@ -1,8 +1,8 @@
-#Visual Basic, FSR Upscaler, Intel Threading Building Blocks, Epic Online Services, Boost C++, Steam Redistributable and DirectX 12 to Latest Versions on PC
+# Visual Basic, FSR Upscaler, Intel Threading Building Blocks, Epic Online Services, Boost C++, Steam Redistributable and DirectX 12 to Latest Versions on PC
 
 Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. 5.7 may provide updates to these core binaries but that isn't out yet. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
 
-#Visual C++ - Base Game programming tasks
+# Visual C++ - Base Game programming tasks
 https://visualstudio.microsoft.com/downloads/
  
 Found in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64, can be copied from Windows/system32 and are updated via windows updates regularly with major update releases. If there is a newer version out ahead of the update schedule, those will be Included in the linked zip at the bottom with the most recent versions. But if you want to keep these up to date yourself, download visual studio and search for them with the feature updates as they are released to VS.
@@ -19,7 +19,7 @@ Found in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binari
 - vcruntime140_1.dll
 - vcruntime140_threads.dll
 
-#AMD FSR UPSCALER - Resolution Scaling
+# AMD FSR UPSCALER - Resolution Scaling
 Latest AMD FSR upscaler, Download the SDK package from https://gpuopen.com/fidelityfx-super-resolution-4/#downloads then in the \Kits\FidelityFX\bin folder in the zip, extract the following
 
 - amd_fidelityfx_upscaler_dx12.dll
@@ -28,12 +28,12 @@ Latest AMD FSR upscaler, Download the SDK package from https://gpuopen.com/fidel
 
 to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. Delete the old amd_fidelityfx_dx12.dll and remove the loader wording in the new file so it matches the file name of the one you previously deleted. The other files you don't have to rename as the loader will use those as is. This will update it to the latest version available from AMD.
 
-#Intel threading building blocks
+# Intel threading building blocks
 tbbmalloc.dll -> https://www.intel.com/content/www/us/en/developer/tools/oneapi/onetbb-download.html
 part of oneAPI
 latest tbb.dll was part of Intel(R) Parallel Studio XE 2020 Update 2, 2020.3.2024.0524. Superseeded by oneAPI, needs updating....eventually. That's on WC to convert over to using oneAPI for memory management in the newer version platform.
 
-#EPIC ONLINE SERVICES - Matchmaking, EOSID Account and Mod Authentication
+# EPIC ONLINE SERVICES - Matchmaking, EOSID Account and Mod Authentication
 https://onlineservices.epicgames.com/en-US/sdk C library. 
 
 The EOSSDK-Win64-Shipping.dll from the SDK\Bin folder in the zip goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS.
@@ -43,7 +43,7 @@ https://learn.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-redistributable
 If you have visual studio installed, use the nuget package manager in a new project to install the latest Xaudio 2 package. 
 Newer version of xaudio2_9redist.dll included in the attached zip link.
 
-#STEAM REDISTRIBUTABLES - Steam Account and Mod Authentication
+# STEAM REDISTRIBUTABLES - Steam Account and Mod Authentication
 Steam Redistributables
 
 - vstdlib_s.dll
@@ -66,7 +66,7 @@ IMPORTANT: IF ON WINDOWS 10 EXCLUDE COPYING THESE FROM THE ZIP AS THEY ARE NOT S
 - dxgi.dll
 - D3D12SDKLayers.dll ( this may not be in your system32 directory if you don't have visual studio installed, included in the zip )
 
-#Boost C++: portable C++ source libraries designed to extend the functionality of the C++ programming language beyond what is provided by the C++ Standard Library.
+# Boost C++: portable C++ source libraries designed to extend the functionality of the C++ programming language beyond what is provided by the C++ Standard Library.
 
 Go to 
 
@@ -89,7 +89,7 @@ Once that is done, search for the files beginning with their corresponding count
 - boost_thread-mt-x64.dll
 - boost_program_options-mt-x64.dll
 
-#Ark Servers
+# Ark Servers
 Goes in \ShooterGame\Binaries\Win64
 
 SDL3.DLL - OpenGL/D3d layer
@@ -101,7 +101,7 @@ ArkAPI Specific - Self Hosted/VPS Servers Only (NOT RELAVENT FOR NITRADO)
 - libcrypto-3-x64.dll Used for SSL net traffic  
 - msdia140.dll - Used for ARKAPI diagnostics layer
 
-##How to Use
+## How to Use
 Download the source zip and extract all contents to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64 except where there are EXCEPTIONS FOR WINDOWS 10 AND DIRECT X 12!!! 
 
 XBOX Game pass users need to be mindful that the directory structure is different from steam and note file locations, especially for EPIC's online services file. 
