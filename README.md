@@ -36,7 +36,9 @@ latest tbb.dll was part of Intel(R) Parallel Studio XE 2020 Update 2, 2020.3.202
 # EPIC ONLINE SERVICES - Matchmaking, EOSID Account and Mod Authentication
 https://onlineservices.epicgames.com/en-US/sdk C library. 
 
-The EOSSDK-Win64-Shipping.dll from the SDK\Bin folder in the zip goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS.
+For steam, he EOSSDK-Win64-Shipping.dll from the SDK\Bin folder in the zip goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS.
+
+For Microsoft Gamepass users, place this under \XboxGames\ARK- Survival Ascended\Content\ShooterGame\Binaries\WinGDK
 
 xaudio2_9redist.dll goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS\x64
 https://learn.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-redistributable 
