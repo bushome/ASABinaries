@@ -62,7 +62,7 @@ These can also be found in your windows/system32 folder and are updated via wind
 
 If you want the absolute latest and greatest function deployments then opt for the DirectX 12 Agility SDK releases instead of waiting around on the OS release schedule. https://devblogs.microsoft.com/directx/directx12agility/
 
-IMPORTANT: IF ON WINDOWS 10 EXCLUDE COPYING THESE FROM THE ZIP AS THEY ARE NOT SUPPORTED GIVEN THEY ARE FROM A WIN11 ENVIRONMENT
+IMPORTANT: IF ON WINDOWS 10 EXCLUDE COPYING THESE FROM THE ZIP AS THEY ARE NOT SUPPORTED GIVEN THEY ARE FROM A WIN11 ENVIRONMENT. You will only be able to run them using a patched exe, which is only available with non-battle eye servers. 
 
 - D3D12Core.dll
 - dxgi.dll
