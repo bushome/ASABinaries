@@ -1,11 +1,11 @@
 # Visual Basic, FSR Upscaler, Intel Threading Building Blocks, Epic Online Services, Boost C++, Steam Redistributable and DirectX 12 to Latest Versions on PC
 
-Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. 5.7 may provide updates to these core binaries but that isn't out yet. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
+Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. 5.8 may provide updates to these core binaries but that isn't out yet. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
 
 # Visual C++ - Base Game programming tasks
 https://visualstudio.microsoft.com/downloads/
  
-Found in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64, can be copied from Windows/system32 and are updated via windows updates regularly with major update releases. If there is a newer version out ahead of the update schedule, those will be Included in the linked zip at the bottom with the most recent versions. But if you want to keep these up to date yourself, download visual studio and search for them with the feature updates as they are released to VS.
+Found in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64, can be copied from Windows/system32 and are updated via windows updates regularly with major update releases. If you want to keep these up to date yourself on the latest stable release, download visual studio and search for them with the feature updates as they are released to VS. They will usually reside in C:\Program Files\Microsoft Visual Studio\18\Community\VC\Redist\MSVC\14.51.36231\x64\Microsoft.VC145.CRT while msdia140.dll will be in C:\Program Files\Microsoft Visual Studio\18\Community\DIA SDK\bin\amd64
 
 - concrt140.dll
 - msdia140.dll
@@ -26,7 +26,7 @@ Latest AMD FSR upscaler, Download the SDK package from https://gpuopen.com/fidel
 - amd_fidelityfx_framegeneration_dx12.dll 
 - amd_fidelityfx_loader_dx12.dll 
 
-to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. Delete the old amd_fidelityfx_dx12.dll and remove the loader wording in the new file so it matches the file name of the one you previously deleted. The other files you don't have to rename as the loader will use those as is. This will update it to the latest version available from AMD.
+to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. Delete the old amd_fidelityfx_dx12.dll and remove the loader wording in the new file so it matches the file name of the one you previously deleted. The other files you don't have to rename as the loader will use those as is. This will update it to the latest version available from AMD.  
 
 # Intel threading building blocks
 tbbmalloc.dll -> https://www.intel.com/content/www/us/en/developer/tools/oneapi/onetbb-download.html
@@ -36,14 +36,13 @@ latest tbb.dll was part of Intel(R) Parallel Studio XE 2020 Update 2, 2020.3.202
 # EPIC ONLINE SERVICES - Matchmaking, EOSID Account and Mod Authentication
 https://onlineservices.epicgames.com/en-US/sdk C library. 
 
-For steam, he EOSSDK-Win64-Shipping.dll from the SDK\Bin folder in the zip goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS.
+For steam, the EOSSDK-Win64-Shipping.dll from the SDK\Bin folder goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS.
 
 For Microsoft Gamepass users, place this under \XboxGames\ARK- Survival Ascended\Content\ShooterGame\Binaries\WinGDK
 
 xaudio2_9redist.dll goes in the \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\RedpointEOS\x64
 https://learn.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-redistributable 
 If you have visual studio installed, use the nuget package manager in a new project to install the latest Xaudio 2 package. 
-Newer version of xaudio2_9redist.dll included in the attached zip link.
 
 # STEAM REDISTRIBUTABLES - Steam Account and Mod Authentication
 Steam Redistributables
@@ -55,7 +54,7 @@ Steam Redistributables
 - steamclient.dll
 - steamclient64.dll 
 
-Can be found in your steam client's root directory, updates any time the client itself is updated. Drag and drop into \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. 
+Can be found in your steam client's root directory, updates any time the client itself is updated. Drag and drop into \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. These also get updated any time you run steamcmd when updating self hosted server's as well. But keep an eye on them in your client otherwise.  
 
 # Using a newer Direct X 12 Agility SDK (patching the game exe) 
 
@@ -152,10 +151,6 @@ originals in the game's `D3D12` folder.
   version don't match. Recheck Steps 1 to 3.
 - **To undo everything**: run Steam's "Verify integrity of game files".
 
-- D3D12Core.dll
-- dxgi.dll
-- D3D12SDKLayers.dll ( this may not be in your system32 directory if you don't have visual studio installed, included in the zip )
-
 # Boost C++: portable C++ source libraries designed to extend the functionality of the C++ programming language beyond what is provided by the C++ Standard Library.
 
 Go to 
@@ -189,10 +184,9 @@ ArkAPI Specific - Self Hosted/VPS Servers Only (NOT RELAVENT FOR NITRADO)
 
 - libssl-3-x64.dll - Used for SSL net traffic 
 - libcrypto-3-x64.dll Used for SSL net traffic  
-- msdia140.dll - Used for ARKAPI diagnostics layer
 
 ## How to Use
-Download the source zip and extract all contents to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64 except where there are EXCEPTIONS FOR WINDOWS 10 AND DIRECT X 12!!! 
+Download the source zip and extract all relevant contents ( don't use the included Direct X 12 files before first backing up the originals ) to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64 except where there are EXCEPTIONS FOR WINDOWS 10 AND DIRECT X 12!!! 
 
 XBOX Game pass users need to be mindful that the directory structure is different from steam and note file locations, especially for EPIC's online services file. 
 
