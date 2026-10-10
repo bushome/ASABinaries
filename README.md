@@ -57,12 +57,14 @@ Steam Redistributables
 
 Can be found in your steam client's root directory, updates any time the client itself is updated. Drag and drop into \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. 
 
-# Using a newer Direct X 12 Agility SDK (patching the game exe)
+# Using a newer Direct X 12 Agility SDK (patching the game exe) 
 
 The game exe stores the Agility SDK version it expects. If the DLLs in the
 `D3D12` folder are a different version, the game fails at launch with
 "DirectX 12 is not supported on your system". To use newer DLLs you must
-change that stored number to match.
+change that stored number to match. IF YOU ARE NOT GOING TO BE USING THE NEWER 
+AGILITY SDK FILES IN THE REPO WITH THIS THEN DO NOT DROP THEM INTO YOUR GAME
+FOLDER!!!!
 
 > **Warning**
 > - This modifies `ArkAscended.exe`. **Do not use it with BattlEye.** Only
