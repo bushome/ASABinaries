@@ -56,7 +56,6 @@ Steam Redistributables
 - steamclient64.dll 
 
 Can be found in your steam client's root directory, updates any time the client itself is updated. Drag and drop into \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. 
----------------------------------------------------------------------------
 
 # Using a newer Direct X 12 Agility SDK (patching the game exe)
 
@@ -154,7 +153,7 @@ originals in the game's `D3D12` folder.
 - D3D12Core.dll
 - dxgi.dll
 - D3D12SDKLayers.dll ( this may not be in your system32 directory if you don't have visual studio installed, included in the zip )
------------------------------------------------------------------------------------------------------------------------------------
+
 # Boost C++: portable C++ source libraries designed to extend the functionality of the C++ programming language beyond what is provided by the C++ Standard Library.
 
 Go to 
