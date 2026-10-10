@@ -182,7 +182,7 @@ Once that is done, search for the files beginning with their corresponding count
 # Ark Servers
 Goes in \ShooterGame\Binaries\Win64
 
-SDL3.DLL - OpenGL/D3d layer
+SDL3.DLL - SDL handles windows, keyboard, mouse and controller input, and audio across platforms.
 https://github.com/libsdl-org/SDL
 
 ArkAPI Specific - Self Hosted/VPS Servers Only (NOT RELAVENT FOR NITRADO) 
