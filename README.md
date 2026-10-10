@@ -56,18 +56,104 @@ Steam Redistributables
 - steamclient64.dll 
 
 Can be found in your steam client's root directory, updates any time the client itself is updated. Drag and drop into \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. 
+---------------------------------------------------------------------------
+## Using a newer Agility SDK (patching the game exe)
 
-#DIRECTX 12 - Graphics API
-These can also be found in your windows/system32 folder and are updated via windows updates. Place in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64\D3D12
+The game exe stores the Agility SDK version it expects. If the DLLs in the
+`D3D12` folder are a different version, the game fails at launch with
+"DirectX 12 is not supported on your system". To use newer DLLs you must
+change that stored number to match.
 
-If you want the absolute latest and greatest function deployments then opt for the DirectX 12 Agility SDK releases instead of waiting around on the OS release schedule. https://devblogs.microsoft.com/directx/directx12agility/
+> **Warning**
+> - This modifies `ArkAscended.exe`. **Do not use it with BattlEye.** Only
+>   launch without BattlEye and only join servers that don't enforce it.
+> - Steam's "Verify integrity of game files" and every game update will undo
+>   the patch. Repeat these steps after each update.
+> - Keep a copy of the original exe before you start.
 
-IMPORTANT: IF ON WINDOWS 10 EXCLUDE COPYING THESE FROM THE ZIP AS THEY ARE NOT SUPPORTED GIVEN THEY ARE FROM A WIN11 ENVIRONMENT. You will only be able to run them using a patched exe, which is only available with non-battle eye servers. 
+### What you need
+
+- [CFF Explorer](https://ntcore.com/explorer-suite/) (part of Explorer Suite)
+- The `D3D12Core.dll` and `d3d12SDKLayers.dll` from this repo
+
+### Step 1: Find your two version numbers
+
+You need two numbers: the version your game **currently ships** and the
+**new** version you are installing. In both cases the number is the
+**middle part** of the SDK version (for example, 1.619.6 gives 619).
+
+1. **Current version:** before replacing anything, right-click the original
+   `D3D12Core.dll` in the game's `D3D12` folder > Properties > Details, and
+   read the product version.
+2. **New version:** do the same for the `D3D12Core.dll` from this repo.
+
+If both numbers are the same, you don't need to patch the exe. Skip to Step 4.
+
+Use retail releases only (1.6xx). Preview releases (1.7xx) need Windows
+Developer Mode and are not supported here.
+
+### Step 2: Convert both numbers to hex bytes
+
+The exe stores the number as 4 bytes in reverse (little-endian) order.
+Convert **both** numbers from Step 1.
+
+**Quick way (PowerShell):** replace `619` with your number.
+
+```powershell
+[BitConverter]::ToString([BitConverter]::GetBytes([uint32]619))
+```
+
+Output: `6B-02-00-00`. Those are the four bytes, in the order you'll see them.
+
+**By hand (Windows Calculator):**
+
+1. Open Calculator and switch to **Programmer** mode.
+2. Select **DEC**, type the number (e.g. `619`), and read the **HEX** line (`26B`).
+3. Pad it with zeros to 8 digits: `0000026B`.
+4. Split into pairs: `00 00 02 6B`.
+5. Reverse the order of the pairs: `6B 02 00 00`.
+
+Examples:
+
+| Number | Bytes in the exe |
+|--------|------------------|
+| 614    | `66 02 00 00`    |
+| 618    | `6A 02 00 00`    |
+| 619    | `6B 02 00 00`    |
+
+### Step 3: Patch the exe
+
+1. Open `ShooterGame\Binaries\Win64\ArkAscended.exe` in CFF Explorer.
+2. Click **Export Directory** and find the row named `D3D12SDKVersion`.
+3. Copy its **Function RVA** value.
+4. Click **Address Converter**, paste the value into the **RVA** field, and
+   press Enter. The hex view jumps to that location.
+5. **Check the first 4 bytes.** They must match the bytes for your
+   **current** version from Step 2. If they don't, stop: you are in the
+   wrong place.
+6. Click the first byte and type the bytes for your **new** version over
+   the old ones.
+7. **File > Save As** under a new name, then swap it in for the original
+   (keep the original as a backup).
+
+The location changes with every game build, so always find it through
+Export Directory. Never reuse an offset from an earlier patch.
+
+### Step 4: Install the DLLs
+
+Copy `D3D12Core.dll` and `d3d12SDKLayers.dll` from this repo over the
+originals in the game's `D3D12` folder.
+
+### Troubleshooting
+
+- **"DirectX 12 is not supported"**: the number in the exe and the DLL
+  version don't match. Recheck Steps 1 to 3.
+- **To undo everything**: run Steam's "Verify integrity of game files".
 
 - D3D12Core.dll
 - dxgi.dll
 - D3D12SDKLayers.dll ( this may not be in your system32 directory if you don't have visual studio installed, included in the zip )
-
+-----------------------------------------------------------------------------------------------------------------------------------
 # Boost C++: portable C++ source libraries designed to extend the functionality of the C++ programming language beyond what is provided by the C++ Standard Library.
 
 Go to 
