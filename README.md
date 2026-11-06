@@ -29,9 +29,10 @@ Latest AMD FSR upscaler, Download the SDK package from https://gpuopen.com/fidel
 to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. Delete the old amd_fidelityfx_dx12.dll and remove the loader wording in the new file so it matches the file name of the one you previously deleted. The other files you don't have to rename as the loader will use those as is. This will update it to the latest version available from AMD.  
 
 # Intel threading building blocks
-tbbmalloc.dll -> https://www.intel.com/content/www/us/en/developer/tools/oneapi/onetbb-download.html
-part of oneAPI
-latest tbb.dll was part of Intel(R) Parallel Studio XE 2020 Update 2, 2020.3.2024.0524. Superseeded by oneAPI, needs updating....eventually. That's on WC to convert over to using oneAPI for memory management in the newer version platform.
+tbb12.dll & tbbmalloc.dll -> https://www.intel.com/content/www/us/en/developer/tools/oneapi/onetbb-download.html
+part of oneAPI 
+
+IMPORTANT -> The old tbb.dll that had been shipping with ark ascended since release no longer applies and MUST be removed post UE5.8 as of 11/6/2026. 
 
 # EPIC ONLINE SERVICES - Matchmaking, EOSID Account and Mod Authentication
 https://onlineservices.epicgames.com/en-US/sdk C library. 
@@ -71,6 +72,14 @@ FOLDER!!!!
 > - Steam's "Verify integrity of game files" and every game update will undo
 >   the patch. Repeat these steps after each update.
 > - Keep a copy of the original exe before you start.
+
+I have included a simple patcher and bat file to simplify the work below. All you
+need to do is modify the bat file to have the correct path for your ark ascended
+installation and the correct MAJOR version number of the Agility version you are
+setting the game executable to. The number in the provided bat file will normally
+match the same version that is included in this repo and the resultant output will 
+have a name of the d3d version appended to the exe name so you can backup your 
+original exe before using the patched one. 
 
 ### What you need
 
