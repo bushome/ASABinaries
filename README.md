@@ -72,6 +72,14 @@ FOLDER!!!!
 >   the patch. Repeat these steps after each update.
 > - Keep a copy of the original exe before you start.
 
+I have included a simple patcher and bat file to simplify the work below. All you
+need to do is modify the bat file to have the correct path for your ark ascended
+installation and the correct MAJOR version number of the Agility version you are
+setting the game executable to. The number in the provided bat file will normally
+match the same version that is included in this repo and the resultant output will 
+have a name of the d3d version appended to the exe name so you can backup your 
+original exe before using the patched one. 
+
 ### What you need
 
 - [CFF Explorer](https://ntcore.com/explorer-suite/) (part of Explorer Suite)
