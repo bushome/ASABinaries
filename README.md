@@ -6,7 +6,7 @@ So at a glance what this Repo covers in terms of updates to the shipped binaries
 
 | Component     | Shipped       | Repo          | Gap            |
 |---------------|---------------|---------------|----------------|
-| TBB           | 2022.3.0.0    | 2023.2.0.0    | ~1 year        |
+| TBB (OneAPI)  | 2022.3.0.0    | 2023.2.0.0    | ~1 year        |
 | DX12 Agility  | 618           | 620           | 2 versions     |
 | XAudio2       | 1.0.0.1       | 1.0.2504.10003| ~13 years      |
 | EOS SDK       | 1.16.2.0      | 1.19.2.1      | 3 minor        |
