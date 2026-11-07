@@ -2,6 +2,17 @@
 
 Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. 5.8 may provide updates to these core binaries but that isn't out yet. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
 
+So at a glance what this Repo covers in terms of updates to the shipped binaries
+
+| Component     | Shipped       | Repo          | Gap            |
+|---------------|---------------|---------------|----------------|
+| TBB           | 2022.3.0.0    | 2023.2.0.0    | ~1 year        |
+| DX12 Agility  | 618           | 620           | 2 versions     |
+| XAudio2       | 1.0.0.1       | 1.0.2504.10003| ~13 years      |
+| EOS SDK       | 1.16.2.0      | 1.19.2.1      | 3 minor        |
+| Boost         | ??            | 1.92          | unknown        |
+| VS Runtime    | 14.50.35719   | 14.51.36247   | slightly ahead |    
+
 # Visual C++ - Base Game programming tasks
 https://visualstudio.microsoft.com/downloads/
  
@@ -18,15 +29,6 @@ Found in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binari
 - vcruntime140.dll
 - vcruntime140_1.dll
 - vcruntime140_threads.dll
-
-# AMD FSR UPSCALER - Resolution Scaling
-Latest AMD FSR upscaler, Download the SDK package from https://gpuopen.com/fidelityfx-super-resolution-4/#downloads then in the \Kits\FidelityFX\bin folder in the zip, extract the following
-
-- amd_fidelityfx_upscaler_dx12.dll
-- amd_fidelityfx_framegeneration_dx12.dll 
-- amd_fidelityfx_loader_dx12.dll 
-
-to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. Delete the old amd_fidelityfx_dx12.dll and remove the loader wording in the new file so it matches the file name of the one you previously deleted. The other files you don't have to rename as the loader will use those as is. This will update it to the latest version available from AMD.  
 
 # Intel threading building blocks
 tbb12.dll & tbbmalloc.dll -> https://www.intel.com/content/www/us/en/developer/tools/oneapi/onetbb-download.html
@@ -45,26 +47,16 @@ xaudio2_9redist.dll goes in the \SteamLibrary\steamapps\common\ARK Survival Asce
 https://learn.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-redistributable 
 If you have visual studio installed, use the nuget package manager in a new project to install the latest Xaudio 2 package. 
 
-# STEAM REDISTRIBUTABLES - Steam Account and Mod Authentication
-Steam Redistributables
-
-- vstdlib_s.dll
-- vstdlib_s64.dll
-- tier0_s.dll
-- tier0_s64.dll
-- steamclient.dll
-- steamclient64.dll 
-
-Can be found in your steam client's root directory, updates any time the client itself is updated. Drag and drop into \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64. These also get updated any time you run steamcmd when updating self hosted server's as well. But keep an eye on them in your client otherwise.  
-
 # Using a newer Direct X 12 Agility SDK (patching the game exe) 
 
 The game exe stores the Agility SDK version it expects. If the DLLs in the
-`D3D12` folder are a different version, the game fails at launch with
+`D3D12` folders are a different version, the game fails at launch with
 "DirectX 12 is not supported on your system". To use newer DLLs you must
-change that stored number to match. IF YOU ARE NOT GOING TO BE USING THE NEWER 
+change that stored number to match. THERE ARE TWO FOLDER LOCATIONS THESE ARE STORED
+IN. THE ENGINE PARENT FOLDER, AND THE SHOOTERGAME PARENT FOLDER, EACH WITH THEIR 
+OWN BINARIES/WIN64 SUB DIRECTORIES. IF YOU ARE NOT GOING TO BE USING THE NEWER 
 AGILITY SDK FILES IN THE REPO WITH THIS THEN DO NOT DROP THEM INTO YOUR GAME
-FOLDER!!!!
+FOLDER!!!! CHOOSE ONLY THE FILES YOU ACTUALLY NEED!!!!!!!!!!
 
 > **Warning**
 > - This modifies `ArkAscended.exe`. **Do not use it with BattlEye.** Only
@@ -170,18 +162,20 @@ https://www.boost.org/releases/latest/ ( recently started posting the windows bi
 
 Navigate to the latest major version release, under that find the latest sub version ending in -64.exe (IE 64 bit)
 
-Run the installer, once the installer is done navigate to C:\local\boost_1_92_0 and run bootstrap.bat. That will initialize the library for windows. Now open a command prompt and type cd C:\local\boost_1_92_0 press enter. Then punch in b2 toolset=msvc link=shared stage press enter. This will initiate the library compiler to make the boost DLLs...it takes awhile to compile the library for visual studio ( which is what the game is built under ). So sit back, eat some oatmeal, grab a coffee or something while it does it's thing. When it's finished, you can move them over to replace the ones in the game directory. 
+Run the installer, once the installer is done navigate to C:\local\boost_1_92_0 and run bootstrap.bat. That will initialize the library for windows. Now open a command prompt and type cd C:\local\boost_1_92_0 press enter. Then punch in b2 toolset=msvc link=shared stage press enter. This will initiate the library compiler to make the boost DLLs...it takes awhile to compile the library for visual studio ( which is what the game is built under ). So sit back, eat some oatmeal, grab a coffee or something while it does it's thing. 
 
-Once that is done, search for the files beginning with their corresponding counterparts below. Note, Since version 1.69, Boost.System consists entirely of inline functions and templates in the headers. It does not generate a DLL or .lib file during compilation because there is no code to compile. So you won't find it among the compiled files....don't worry about it. Copy the remaining files to the Win64 dir, delete the originals except the existing system one and rename the files to match that of the originals. Similar process of renaming much like the FSR upscaler. 
+Once that is done, search for the files beginning with their corresponding counterparts below. Note, Since version 1.69, Boost.System consists entirely of inline functions and templates in the headers. It does not generate a DLL or .lib file during compilation because there is no code to compile. So you won't find it among the compiled files....don't worry about it. Copy the remaining files from the stage folder to the Win64 dir, delete the originals except the existing system one and rename the files to match that of the originals.
 
-- boost_chrono-mt-x64.dll
 - boost_atomic-mt-x64.dll
+- boost_chrono-mt-x64.dll
+- boost_container-mt-x64.dll
 - boost_filesystem-mt-x64.dll
+- boost_graph-mt-x64.dll
 - boost_iostreams-mt-x64.dll
-- boost_regex-mt-x64.dll
-- boost_system-mt-x64.dll
-- boost_thread-mt-x64.dll
 - boost_program_options-mt-x64.dll
+- boost_random-mt-x64.dll
+- boost_regex-mt-x64.dll
+- boost_thread-mt-x64.dll
 
 # Ark Servers
 Goes in \ShooterGame\Binaries\Win64
@@ -195,8 +189,5 @@ ArkAPI Specific - Self Hosted/VPS Servers Only (NOT RELAVENT FOR NITRADO)
 - libcrypto-3-x64.dll Used for SSL net traffic  
 
 ## How to Use
-Download the source zip and extract all relevant contents ( don't use the included Direct X 12 files before first backing up the originals ) to \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64 except where there are EXCEPTIONS FOR WINDOWS 10 AND DIRECT X 12!!! 
 
-XBOX Game pass users need to be mindful that the directory structure is different from steam and note file locations, especially for EPIC's online services file. 
-
-That's it....
+The folder structures are setup just like the ones in the client or server directory so you can drop them right on top of the root folder. REMEMBER, DO NOT COPY OVER YOUR DIRECT X 12 VERSION FOLDERS IF YOU HAVE NO INTENTION OF PLAYING THE GAME ON A MODIFIED EXECUTABLE TO COVER THE NEW VERSION. YOU WILL BE UNABLE TO JOIN ANY SERVERS WITH BATTLE EYE ENABLED.
