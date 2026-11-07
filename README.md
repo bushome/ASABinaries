@@ -1,6 +1,6 @@
 # Visual Basic, FSR Upscaler, Intel Threading Building Blocks, Epic Online Services, Boost C++, Steam Redistributable and DirectX 12 to Latest Versions on PC
 
-Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. 5.8 may provide updates to these core binaries but that isn't out yet. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
+Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
 
 So at a glance what this Repo covers in terms of updates to the shipped binaries
 
