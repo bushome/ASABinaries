@@ -16,7 +16,7 @@ So at a glance what this Repo covers in terms of updates to the shipped binaries
 # Visual C++ - Base Game programming tasks
 https://visualstudio.microsoft.com/downloads/
  
-Found in \SteamLibrary\steamapps\common\ARK Survival Ascended\ShooterGame\Binaries\Win64, can be copied from Windows/system32 and are updated via windows updates regularly with major update releases. If you want to keep these up to date yourself on the latest stable release, download visual studio and search for them with the feature updates as they are released to VS. They will usually reside in C:\Program Files\Microsoft Visual Studio\18\Community\VC\Redist\MSVC\14.51.36231\x64\Microsoft.VC145.CRT while msdia140.dll will be in C:\Program Files\Microsoft Visual Studio\18\Community\DIA SDK\bin\amd64
+If you want to keep these up to date yourself on the latest stable release, download visual studio and search for them with the feature updates as they are released to VS. They will usually reside in C:\Program Files\Microsoft Visual Studio\18\Community\VC\Redist\MSVC\14.51.36231\x64\Microsoft.VC145.CRT while msdia140.dll will be in C:\Program Files\Microsoft Visual Studio\18\Community\DIA SDK\bin\amd64
 
 - concrt140.dll
 - msdia140.dll
