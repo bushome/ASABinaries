@@ -4,14 +4,14 @@ Ark does tend to crash alot on some systems. Outside of trying to run it on subo
 
 So at a glance what this Repo covers in terms of updates to the shipped binaries
 
-| Component     | Shipped       | Repo          | Gap            |
+| Component     | Shipped       | current       | Gap            |
 |---------------|---------------|---------------|----------------|
 | TBB (OneAPI)  | 2022.3.0.0    | 2023.2.0.0    | ~1 year        |
-| DX12 Agility  | 618           | 620           | 2 versions     |
-| XAudio2       | 1.0.0.1       | 1.0.2504.10003| ~13 years      |
-| EOS SDK       | 1.16.2.0      | 1.19.2.1      | 3 minor        |
-| Boost         | ??            | 1.92          | unknown        |
-| VS Runtime    | 14.50.35719   | 14.51.36247   | slightly ahead |    
+| DX12 Agility  | 618           | 620           | 1.1 years      |
+| XAudio2       | 1.0.0.1       | 1.0.2504.10003| ~13 years?!    |
+| EOS SDK       | 1.16.2.0      | 1.19.2.1      | 2.5 years      |
+| Boost         | 1.82          | 1.92          | 3.4 years      | 
+| VS Runtime    | 14.50.35719   | 14.51.36247   | 6.5 months     |    
 
 # Visual C++ - Base Game programming tasks
 https://visualstudio.microsoft.com/downloads/
