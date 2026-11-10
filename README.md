@@ -2,7 +2,7 @@
 
 Ark does tend to crash alot on some systems. Outside of trying to run it on suboptimal system configurations, part of that could be the older versions of files that are currently packaged with the game. Note: any files you copy into the game directly will likely get replaced during patches and will need re-applying afterward to maintain updated versions.
 
-Everything in this repo has been checked against what the game actually loads (import tables of the client and server exes, plus live module lists from a running client, Game Pass client and dedicated server). Files the game ships but never loads are not included, because updating them does nothing. See [Shipped but never loaded](#shipped-but-never-loaded).
+Everything in this repo has been checked against what the game actually loads (import tables of the client and server exes, plus live module lists from a running client, Game Pass client and dedicated server). For the client and server, files the game ships but never loads are not included, because updating them does nothing (the `Editor` folder is separate; the editor loads more). See [Shipped but never loaded](#shipped-but-never-loaded).
 
 So at a glance what this Repo covers in terms of updates to the shipped binaries
 
@@ -28,7 +28,9 @@ The folder structures are setup just like the ones in the game or server directo
 - `Server\` -> your dedicated server's root folder
 - `Editor\` -> your ASA DevKit root folder (see [ASA DevKit](#asa-devkit-editor))
 
-REMEMBER, DO NOT COPY OVER THE `D3D12` FOLDER IF YOU HAVE NO INTENTION OF PLAYING THE GAME ON A MODIFIED EXECUTABLE TO COVER THE NEW VERSION. YOU WILL BE UNABLE TO JOIN ANY SERVERS WITH BATTLE EYE ENABLED. Everything else is a plain file swap and works with BattlEye.
+REMEMBER, DO NOT COPY OVER THE `D3D12` FOLDER IF YOU HAVE NO INTENTION OF PLAYING THE GAME ON A MODIFIED EXECUTABLE TO COVER THE NEW VERSION. YOU WILL BE UNABLE TO JOIN ANY SERVERS WITH BATTLE EYE ENABLED.
+
+> **BattlEye warning:** a patched `ArkAscended.exe` **must NOT be run with BattlEye enabled.** BattlEye checks the game exe, and any modified exe will trip it. Launch the patched game without BattlEye and only join servers that don't enforce it. To play on BattlEye servers again, restore the original exe **and** the original `D3D12` DLLs, since the original exe won't start with the newer DLLs. Steam's "Verify integrity of game files" restores both in one go.
 
 # Visual C++ Runtime
 https://visualstudio.microsoft.com/downloads/
@@ -44,7 +46,7 @@ Used by the game client and server (`ShooterGame\Binaries\Win64`):
 
 ArkAPI (AsaApi) servers only, also included in `Server\`:
 
-- msvcp140_atomic_wait.dll (loaded by plugins, e.g. the MariaDB connector)
+- msvcp140_atomic_wait.dll (loaded by ArkAPI plugins; it appears alongside the MariaDB connector)
 - msdia140.dll (used by AsaApi when it reads the server's symbols to rebuild its offsets cache)
 
 # Intel Threading Building Blocks
@@ -84,8 +86,9 @@ THE NEWER AGILITY SDK FILES IN THE REPO WITH THIS THEN DO NOT DROP THEM INTO
 YOUR GAME FOLDER!!!! CHOOSE ONLY THE FILES YOU ACTUALLY NEED!!!!!!!!!!
 
 > **Warning**
-> - This modifies `ArkAscended.exe`. **Do not use it with BattlEye.** Only
->   launch without BattlEye and only join servers that don't enforce it.
+> - This modifies `ArkAscended.exe`. **You SHOULD NOT run a patched exe with
+>   BattlEye enabled**: any modified exe trips BattlEye. Only launch without
+>   BattlEye and only join servers that don't enforce it.
 > - Steam's "Verify integrity of game files" and every game update will undo
 >   the patch. Repeat these steps after each update.
 > - Keep a copy of the original exe before you start.
@@ -248,7 +251,7 @@ Notes:
 
 These ship with the game (or were in earlier versions of this repo) but nothing in the client or server ever loads them, so updating them has no effect. Checked against the exes' import tables, every DLL they load, and live module lists from a running Steam client, Game Pass client and dedicated server.
 
-- All `boost_*-mt-x64.dll` files (left over from Epic's editor tooling)
+- All `boost_*-mt-x64.dll` files (most likely left over from Epic's editor/USD tooling)
 - `tbb12.dll` (editor only)
 - `concrt140.dll`, `msvcp140_2.dll`, `msvcp140_codecvt_ids.dll`, `vccorlib140.dll`, `vcruntime140_threads.dll`
 - `msvcp140_atomic_wait.dll` and `msdia140.dll` on the client (ArkAPI servers only)
